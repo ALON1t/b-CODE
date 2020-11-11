@@ -1,0 +1,93 @@
+drop table if exists canteen;
+-- 食堂表
+create table canteen(
+id int primary key,
+name varchar(20)
+);
+-- 食堂仓口表
+drop table if exists canteen_warehouse;
+create table canteen_warehouse(
+id int primary key,
+name varchar(20),
+canteen_id int,
+foreign key (canteen_id) references canteen(id)
+);
+
+-- 仓口收费记录表
+drop table if exists warehouse_charges;
+create table warehouse_charges(
+id int primary key,
+prince int,
+data timestamp,
+canteen_warehouse_id int,
+foreign key (canteen_warehouse_id) references canteen_warehouse(id)
+);
+
+-- 用户表
+drop table if exists user;
+create table user(
+id int primary key,
+name varchar(20)
+);
+
+-- 车辆表
+drop table if exists car;
+create table car(
+id int primary key,
+name character(20),
+user_id int,
+foreign key (user_id) references user(id)
+);
+
+-- 违章信息表
+drop table if exists violation_information;
+create table violation_information(
+id int primary key,
+name varchar(20),
+data timestamp,
+user_id int,
+car_id int,
+foreign key (car_id) references car(id),
+foreign key (user_id) references user(id)
+);
+
+-- 宿舍信息
+drop table if exist dormitory;
+create table dormitory(
+id int primary key,
+);
+
+-- 学生信息
+drop table if exists student;
+create table student(
+id int primary key,
+name varchar(20),
+dormitory_id int,
+foreign key dormitory_id references dormitory(id)
+);
+
+-- 每日宿舍查房记录
+drop table if exists record;
+create table record(
+id int primary key,
+data timestamp,
+dormitory_id int,
+foreign key dormitory_id references dormitory(id)
+);
+
+-- 员工表
+drop table if exists satff;
+create table satff(
+id int primary key,
+name varchar(20),
+age int,
+);
+
+-- 考勤记录表
+drop table if exists record;
+create table record(
+id int primary key,
+data timestamp,
+satff_id int,
+foreign key satff_id references satff(id)
+);
