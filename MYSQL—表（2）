@@ -1,0 +1,32 @@
+有一张员工表emp，字段：姓名name，性别sex，部门depart，工资salary。查询以下数据：
+
+作业内容
+1、查询男女员工的平均工资
+2、查询各部门的总薪水
+3、查询总薪水排名第二的部门
+4、查询姓名重复的员工信息
+5、查询各部门薪水大于10000的男性员工的平均薪水
+
+-- 员工表
+drop table if exists emp;
+create table emp(
+name varchar(20),
+sex bit,
+depart varchar(20),
+salary int
+);
+
+-- 1、查询男女员工的平均工资
+select sex,avg(salary) from emp group by salary;
+
+-- 2、查询各部门的总薪水
+select depart,sum(salary) from emp group by depart;
+
+-- 3、查询总薪水排名第二的部门
+select depart,sum(salary) from emp group by depart order by sum(salary) desc limit 1,1; 
+
+-- 4、查询姓名重复的员工信息
+select count(name) from emp group by name having count(name) > 1;
+
+-- 5、查询各部门薪水大于10000的男性员工的平均薪水
+select depart,avg(salary),sex from emp where salary > 10000 and sex = '男' group by depart;
