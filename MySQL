@@ -1,0 +1,23 @@
+drop table if exists A;
+create table A(
+name varchar(32)primary key,
+grade int
+);
+
+insert into A(name,grade) values
+('zhangshan',80),
+('list',60),
+('wangwu',84);
+
+drop table if exists B;
+create table B(
+name varchar(32) primary key, 
+age int,
+A_name varchar(20),
+foreign key (A_name) references A(name)
+);
+insert into B(name,age) values
+('zhangshan',26),
+('list',24),
+('wangwu',26),
+('wutian',26);
