@@ -1,0 +1,45 @@
+//输出包括一行，如果M可以被5整除就输出YES，否则输出NO（结果大小写敏感）
+import java.util.*;
+public class Main{
+    public static void main(String[] args){
+        Scanner scanner = new Scanner(System.in);
+        int M = scanner.nextInt();
+        if(M % 5 == 0){
+            System.out.println("YES");
+        } else {
+            System.out.println("NO");
+        }
+    }
+}
+
+//输出为一行，为“(a+b-c)*d”的计算结果
+import java.util.*;
+public class Main{
+    public static void main(String[] args){
+        Scanner scanner = new Scanner(System.in);
+        int a = scanner.nextInt();
+        int b = scanner.nextInt();
+        int c = scanner.nextInt();
+        int d = scanner.nextInt();
+        System.out.println((a + b - c)* d);
+    }
+}
+//述任意输入一个正整数N，统计1~N之间奇数的个数和偶数的个数，并输出
+import java.util.*;
+public class Main{
+    public static void main(String[] args){
+        Scanner scanner = new Scanner(System.in);
+        int N = scanner.nextInt();
+        int count1 = 0;
+        int count2 = 0;
+        for(int i = 1; i <= N; i++) {
+            if(i % 2 == 0) {
+                count1++;
+            } else {
+                count2++;
+            }
+        }
+        System.out.println(count2 + " " + count1);
+    }
+}
+
