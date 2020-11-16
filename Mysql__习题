@@ -1,0 +1,56 @@
+drop tab;e if exists depart;
+create table depart(
+depart_id int,
+name varchar(20)
+);
+
+drop table if exists satff;
+create table staff(
+staff_id int,
+name varchar(20),
+age int,
+depart_id int,
+foreign key (depart_id) references depart(id)
+);
+
+drop table if exists salary;
+create table salary(
+salary_id int,
+staff_id int,
+salary int,
+year timestamp,
+month timestamp,
+foreign key (staff_id) references staff(id)
+);
+
+-- （问题a）：求每个部门'2016-09'月份的部门薪水总额
+select 
+ depart.name,sun(sal.salary)
+from 
+ depart dep
+ join satff sta on sat.id = sat.depart_id
+ join salary sal on sal.id = sal.staff_id
+where 
+ year(sal.year) = 2016 and nonth(sal.month) = 09
+group by 
+ depart_id;
+
+-- （问题b）：求每个部门的部门人数，要求输出部门名称和人数
+select 
+ dep.name,con(sat.staff_id)
+from 
+ depart dep
+ join satff sta on sat.id = sat.depart_id
+group by
+ sta.depart_id;
+
+-- （问题c）：求公司每个部门的月支出薪资数，要求输出月份和本月薪资总数
+select
+ sal.month.sum(sal.salary)
+from 
+ depart dep
+ join satff sat on sta.id = sat.depart_id
+ join salary sal on sal.id = sal.staff_id 
+group by
+ sat.id,
+ sal.month;
