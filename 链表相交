@@ -1,0 +1,48 @@
+/**
+ *给定两个（单向）链表，判定它们是否相交并返回交点。
+ *请注意相交的定义基于节点的引用，而不是基于节点的值。
+ *换句话说，如果一个链表的第k个节点与另一个链表的第j个节点是同一节点（引用完全相同），则这两个链表相交。
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode(int x) {
+ *         val = x;
+ *         next = null;
+ *     }
+ * }
+ */
+public class Solution {
+    public ListNode getIntersectionNode(ListNode headA, ListNode headB) {
+        ListNode lA = headA; //长
+        ListNode lB = headB; //短
+        int lenA = 0;
+        int lenB = 0;
+        while(lA != null) {
+            lA = lA.next;
+            lenA++;
+        }
+        while(lB != null) {
+            lB = lB.next;
+            lenB++;
+        }
+        lB = headB;
+        lA = headA;
+        int len = lenA - lenB;
+        if(len < 0) {
+            len = lenB - lenA;
+            lA = headB;
+            lB = headA;
+        }
+        while(len != 0) {
+            lA = lA.next;
+            len--;
+        }
+        while(lA != null && lA != lB) {
+            lA = lA.next;
+            lB = lB.next;
+        }
+        return lB;
+        
+    }
+}
