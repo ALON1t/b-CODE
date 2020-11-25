@@ -1,0 +1,37 @@
+/**
+     题目：读入一个字符串str，输出字符串str中的连续最长的数字串
+     输入描述:
+     个测试输入包含1个测试用例，一个字符串str，长度不超过255。
+
+     输出描述:
+     在一行内输出str中里连续最长的数字串。
+     示例1
+     输入
+     abcd12345ed125ss123456789
+     输出
+     123456789
+     */
+    public static void  mostLong(String str) {
+        char[] chars = str.toCharArray();
+        int count = 0;
+        String ret = "";
+        for(int i = 0; i < chars.length; i++) {
+            if(chars[i] >= '0' && chars[i] <= '9') {
+                count = 1;
+                int indexI = i;
+                int indexJ = i;
+                for(int j = i+1; j < chars.length; j++) {
+                    if(chars[j] >= '0' && chars[j] <= '9') {
+                        count++;
+                        indexJ = j;
+                    } else {
+                        break;
+                    }
+                }
+                if(count > ret.length()) {
+                    ret = str.substring(indexI,indexJ + 1);
+                }
+            }
+        }
+        System.out.println(ret);
+    } 
