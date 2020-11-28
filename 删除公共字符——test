@@ -1,0 +1,11 @@
+  public static  void main(String[] args)  {
+        Scanner scanner = new Scanner(System.in);
+        while(scanner.hasNext()) {
+            char[] chars = scanner.nextLine().toCharArray();
+            String str = scanner.nextLine();
+            for(int i = 0; i < chars.length; i++) {
+                if( !str.contains(String.valueOf(chars[i]))) {
+                    System.out.println(chars[i]);
+                }
+            }
+        }
