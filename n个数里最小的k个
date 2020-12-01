@@ -1,0 +1,25 @@
+//每个测试输入包含空格分割的n+1个整数，最后一个整数为k值,n
+//不超过100。
+import java.util.*;
+public class Main{
+    public static  void main(String[] args)  {
+        Scanner scanner = new Scanner(System.in);
+        int[] arr = new int[100];
+        int i = 0;
+        while (scanner.hasNext()) {
+            arr[i] = scanner.nextInt();
+            i++;
+        }
+        int[] a = new int[--i];
+        //将数据复制到数组a中
+        System.arraycopy(arr,0,a,0,i );
+        Arrays.sort(a);
+        for(int j = 0; j < arr[i];j++) {
+            if(j == arr[i] - 1) {
+                System.out.print(a[j]);
+            } else {
+                System.out.print(a[j] + " ");
+            }
+        }
+    }
+}
