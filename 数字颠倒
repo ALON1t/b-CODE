@@ -1,0 +1,30 @@
+import java.util.*;
+public class Main{
+    public static void ff(int n) {
+        int temp = n;
+        int count = 1;
+        while (temp  > 9) {
+            temp = temp / 10;
+            count++;
+        }
+        int[] arr = new int[count];
+        for(int i = 0; i < count;i++) {
+            if(n > 9) {
+                arr[i] = n%10;
+                n = n/10;
+            } else {
+                arr[i]  = n;
+            }
+        }
+        String str = "";
+        for(int i = 0; i < count;i++) {
+            str = str + arr[i];
+        }
+        System.out.println(str);
+    }
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        int n = scanner.nextInt();
+        ff(n);
+    }
+}
