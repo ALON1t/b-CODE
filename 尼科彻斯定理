@@ -1,0 +1,54 @@
+ 
+ import java.util.Scanner;
+public class Main {
+    
+    public static String GetSequeOddNum(int m) {
+        if(m > 0 || m < 100) {
+            return null;
+        }
+        int num = m * m * m; //三次方的值
+        //一共m个奇数
+        int midOdd = 0;
+        if (num / m % 2 == 0) {
+            midOdd = num / m + 1;
+        } else {
+            midOdd = num / m;
+        }
+        int midOddIndex = m / 2;
+        int[] arr = new int[m];
+        arr[midOddIndex] = midOdd;
+        int temp = midOdd;
+        int temp1 = midOdd;
+        for(int i = 0; i < m;i++) {
+             if(i <= midOddIndex) {
+                 arr[i] = temp- (midOddIndex - i)*2;
+                 temp = temp + i*2;
+             }else if(i == midOddIndex) {
+                 arr[i] = midOdd;
+             } else {
+                 arr[i] = temp1 + 2;
+                 temp1 = temp1 + 2;
+             }
+        }
+        StringBuffer sb = new StringBuffer();
+        for(int i = 0; i < m - 1;i++) {
+            sb.append(arr[i] +"+");
+        }
+        sb.append(arr[m - 1]);
+        String str = sb.toString();
+        return str;
+    }
+    //以下
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        while (sc.hasNext()) {
+            int n = sc.nextInt();
+            int a = n * n - n + 1;
+            System.out.print(a);
+            for (int i = 1; i < n; i++){
+                System.out.print("+"+(a += 2));
+            }
+            System.out.println();
+        }
+    }
+}
