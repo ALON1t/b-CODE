@@ -1,0 +1,29 @@
+ public static int funnn(int[] arr,int score) {
+        int count = 0;
+        for(int i = 0; i < arr.length;i++) {
+            if(arr[i] == score) {
+                count++;
+            }
+        }
+        return count;
+    }
+    public static  void main(String[] args)  {
+
+        Scanner sc = new Scanner(System.in);
+        while(sc.hasNext()) {
+            int N = sc.nextInt();
+            if(N == 0) {
+                return;
+            }
+            int[] arr = new int[N];
+            int i = 0;
+            while(N > 0) {
+                arr[i] = sc.nextInt();
+                i++;
+                N--;
+            }
+            int score = sc.nextInt();
+            int ret = funnn(arr,score);
+            System.out.println(ret);
+        }
+    }
