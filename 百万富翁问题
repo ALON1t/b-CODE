@@ -1,0 +1,11 @@
+public static  void main(String[] args)  {
+        int sumW = 0;
+        long sumP = 0;
+        int day = 1;
+        while (day <= 30) {
+            sumW = sumW + 10;
+            sumP = sumP  +(long)Math.pow(2,day - 1);
+            day++;
+        }
+        System.out.println(sumW + " "+sumP);
+}
