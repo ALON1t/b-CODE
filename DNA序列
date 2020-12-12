@@ -1,0 +1,31 @@
+import java.util.Scanner;
+public class Main {
+	public static void main(String[] args){
+		Scanner scanner=new Scanner(System.in);
+		String DNA=scanner.nextLine();
+		int len=DNA.length();
+		int N=scanner.nextInt();
+		int[] count=new int[len-N+1];
+		
+		for (int i = 0; i <= len-N; i++) {
+			for (int j = i; j < i+N; j++) {
+				if ('C'==DNA.charAt(j)||'G'==DNA.charAt(j)) {
+					count[i]+=1;
+				}
+			}			
+		}
+		
+		int max=count[0];
+		int k=0;
+		for (int i = 1; i < count.length; i++) {		
+			if (count[i]>max) {
+				max=count[i];
+				k=i;
+			}
+		}
+		
+		System.out.print(DNA.substring(k, k+N));
+		
+	}
+
+}
