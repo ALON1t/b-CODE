@@ -1,0 +1,13 @@
+import java.util.*;
+
+public class Exchange {
+    public int[] exchangeAB(int[] AB) {
+        // write code here
+        //x ^ x = 0
+        //x ^ 0 = x
+        AB[0] ^= AB[1]; 
+        AB[1] ^= AB[0];  
+        AB[0] ^= AB[1];
+        return AB;
+    }
+}
