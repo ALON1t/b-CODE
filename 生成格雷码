@@ -1,0 +1,23 @@
+import java.util.*;
+
+public class GrayCode {
+    public String[] getGray(int n) {
+        // write code here
+        String[] ch = null; //先定义一个String类型的数组
+        if(n == 1) { //如果只有一位
+            ch = new String[]{"0","1"};
+        } else { //递归求解
+            //求n = 3的gray码，先求出n = 2的gray码（00 01 11 10）
+            //n = 3的gray码就是在首位加“0”或“1”
+            //加“0”：000 001 011 010
+            //加“1”反序：110 111 101 100
+            String[] ch1 = getGray(n - 1);
+            ch = new String[2*ch1.length];
+            for(int i = 0;i < ch1.length;i++) {
+                ch[i] = "0" + ch1[i];
+                ch[ch.length - 1 - i] = "1" + ch1[i];
+            }
+        }
+        return ch;
+    }
+}
