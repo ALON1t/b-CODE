@@ -1,0 +1,15 @@
+public class Solution {
+    public double Power(double base, int exponent) {
+            if(exponent<0){
+                base = 1/base;
+                exponent = -exponent;
+            }
+            double s = 1;
+            if(exponent>0){
+                for (; exponent >=1 ; exponent--) {
+                    s *=base;
+                }
+            }
+        return s;
+  }
+}
