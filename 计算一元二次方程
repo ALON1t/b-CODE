@@ -1,0 +1,33 @@
+import java.io.*;
+public class Main{
+  
+    public static void main(String[] args)throws IOException{
+        BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
+        String str;
+        while((str = bf.readLine())!=null){
+        double a = Double.parseDouble(str.split(" ")[0]);
+        double b = Double.parseDouble(str.split(" ")[1]);
+        double c = Double.parseDouble(str.split(" ")[2]);
+        result(a,b,c);
+        }
+    }
+    public static void result(Double a,Double b,Double c){
+        Double z= b*b-4*a*c;
+        if(a!=0){
+            if (z==0)
+             System.out.printf("x1=x2=%.2f\n",-b/(2*a));
+            else if(z>0){
+                Double x1 = (-b-Math.sqrt(z))/(2*a);
+                Double x2 = (-b+Math.sqrt(z))/(2*a);
+                System.out.printf("x1=%.2f;x2=%.2f\n",x1,x2);
+            }
+            else{
+                Double shi = -b/(2*a);
+                Double xu = Math.sqrt(-z)/(2*a);
+                System.out.printf("x1=%.2f-%.2fi;x2=%.2f+%.2fi\n",shi,xu,shi,xu);
+            }
+        }
+        else
+            System.out.println("Not quadratic equation");
+    }
+}
