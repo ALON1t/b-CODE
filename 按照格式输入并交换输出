@@ -1,0 +1,14 @@
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+
+public class Main{
+    public static void main(String[] arg) throws IOException{
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        String[] words = br.readLine().split(",");
+        String[] word1 = words[0].split("=");
+        String[] word2 = words[1].split("=");
+        
+        System.out.print(word1[0]+"="+word2[1]+","+word2[0]+"="+word1[1]);
+    }
+}
