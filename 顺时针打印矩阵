@@ -1,0 +1,100 @@
+import java.util.ArrayList;
+public class Solution {
+    public ArrayList<Integer> printMatrix(int [][] matrix) {
+        int row = matrix.length;
+        if(row==0){
+            return null;
+        }
+        int col = matrix[0].length;
+        if(col==0){
+            return null;
+        }
+        ArrayList<Integer> list = new ArrayList<Integer>();
+        int startRow = 0;
+        int endRow = row-1;
+        int startCol = 0;
+        int endCol = col-1;
+        while(startRow<=endRow&&startCol<=endCol){
+            //如果就剩下一行
+            if(startRow==endRow){
+                for(int i=startCol;i<=endCol;i++)
+                    list.add(matrix[startRow][i]);
+                return list;
+            }
+            //如果就剩下一列
+            if(startCol==endCol){
+                for(int i=startRow;i<=endRow;i++)
+                    list.add(matrix[i][startCol]);
+                return list;
+            }
+            //首行
+            for(int i=startCol;i<=endCol;i++)
+                list.add(matrix[startRow][i]);
+            //末列
+            for(int i=startRow+1;i<=endRow;i++)
+                list.add(matrix[i][endCol]);
+            //末行
+            for(int i=endCol-1;i>=startCol;i--)
+                list.add(matrix[endRow][i]);
+            //首列
+            for(int i=endRow-1;i>=startRow+1;i--)
+                list.add(matrix[i][startCol]);
+             
+            startRow = startRow + 1;
+            endRow = endRow - 1;
+            startCol = startCol + 1;
+            endCol = endCol - 1;
+        }
+        return list;
+        
+        /*ArrayList<Integer> list=new ArrayList<Integer>();
+        if (matrix==null||matrix.length==0||matrix[0].length==0){
+            return list;
+        }
+        int rows=matrix.length;
+        int cols=matrix[0].length;
+        int startrow=0;
+        int endrow=rows-1;
+        int startcol=0;
+        int endcol=cols-1;
+        while(startrow<=endrow&&startcol<=endcol){
+            //如果只剩一行
+            if (startrow==endrow){
+                for(int i=startcol;i<=endcol;i++){
+                    list.add(matrix[startrow][i]);
+                    return list; 
+                }
+            }
+            //只剩一列
+            if(startcol==endcol){
+                for(int j=startrow;j<=endrow;j++){
+                    list.add(matrix[j][startcol]);
+                    return list; 
+                }
+            }
+            
+            //首行
+            for(int i=startcol;i<=endcol;i++){
+                list.add(matrix[startrow][i]);
+            }
+            //末列
+            for(int j=startrow+1;j<=endrow;j++){
+                list.add(matrix[j][endcol]);
+            }
+            //末行
+            for(int i=endcol-1;i>=startcol;i--){
+                list.add(matrix[endrow][i]);
+            }
+            //首列
+            for(int j=endrow-1;j>=startrow+1;j--){
+                list.add(matrix[j][startcol]);
+            }
+            startrow=startrow+1;
+            startcol=startcol+1;
+            endrow=endrow-1;
+            endcol=endcol-1;
+        }
+        return list;*/
+    }
+  
+}
