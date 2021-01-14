@@ -1,0 +1,24 @@
+import java.util.ArrayList;
+
+public class Solution {
+    public String PrintMinNumber(int [] numbers) {
+        int len = numbers.length;
+        if(len < 1)
+            return "";
+        for(int i = 0; i < len; i++){
+            for(int j = 0; j < len-i-1; j++){
+                String s1 = String.valueOf(numbers[j]) + String.valueOf(numbers[j+1]);
+                String s2 = String.valueOf(numbers[j+1]) + String.valueOf(numbers[j]);
+                if(s1.compareTo(s2) > 0){
+                    int temp = numbers[j];
+                    numbers[j] = numbers[j+1];
+                    numbers[j+1] = temp;
+                }
+            }
+        }
+        String string = String.valueOf(numbers[0]);
+        for(int i = 1; i < len; i++)
+            string += String.valueOf(numbers[i]);
+        return string;
+    }
+}
