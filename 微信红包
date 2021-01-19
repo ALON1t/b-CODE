@@ -1,0 +1,20 @@
+import java.util.*;
+
+public class Gift {
+    public int getValue(int[] gifts, int n) {
+        // write code here
+        Arrays.sort(gifts);
+            int num = gifts[n / 2];
+            int i = 0;
+            int count = 0;
+            for(; i < n ; i++) {
+                if (gifts[i] == num) {
+                    count++;
+                }
+            }
+            if(count <= n / 2) {
+                return 0;
+            }
+            return num;
+    }
+}
