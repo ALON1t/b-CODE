@@ -1,0 +1,19 @@
+class Solution {
+    public boolean isPalindrome(int x) {
+        if( x < 0) {
+            return false;
+        }
+         String str = String.valueOf(x);
+         char[] chars = str.toCharArray();
+         int startIndex = 0;
+         int endIndex = chars.length - 1;
+         while (startIndex <= endIndex) {
+             if(chars[startIndex] != chars[endIndex]) {
+                 return false;
+             }
+             startIndex++;
+             endIndex--;
+         }
+         return true;
+    }
+}
