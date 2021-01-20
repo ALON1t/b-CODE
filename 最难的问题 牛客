@@ -1,0 +1,28 @@
+// write your code here
+import java.util.*;
+public class Main{
+    public static void main(String[] args){
+        Scanner sc = new Scanner(System.in);
+        while(sc.hasNext()){
+            char[] ch = new char[100];
+            String str1 = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+            String str2 = "VWXYZABCDEFGHIJKLMNOPQRSTU";
+            char[] chars1 = str1.toCharArray();
+            char[] chars2 = str2.toCharArray();
+            for(int i = 0;i < str1.length();i++){
+                ch[chars1[i]] = chars2[i];
+            }
+            String str = sc.nextLine();
+            char[] chars = str.toCharArray();
+            String ret = "";
+            for(int i = 0;i < str.length();i++){
+                if(chars[i] == ' '){
+                    ret += " ";
+                }else{
+                    ret += ch[chars[i]];
+                }
+            }
+            System.out.println(ret);
+        }
+    }
+}
