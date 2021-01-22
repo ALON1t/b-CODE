@@ -1,0 +1,33 @@
+class Solution {
+    public String reverseOnlyLetters(String S) {
+        char[] chars = S.toCharArray();
+        int startIndex = 0;
+        int endIndex = chars.length - 1;
+        if(startIndex == endIndex) {
+            return S;
+        }
+        while (startIndex <= endIndex) {
+
+            if(((chars[startIndex] >= 'a' && chars[startIndex] <= 'z')||
+                    (chars[startIndex] >= 'A' && chars[startIndex] <= 'Z')) &&
+                    ((chars[endIndex] >= 'a' && chars[endIndex] <= 'z')||
+                    (chars[endIndex] >= 'A' && chars[endIndex] <= 'Z'))) {
+                 char temp = chars[startIndex];
+                 chars[startIndex] = chars[endIndex];
+                 chars[endIndex] = temp;
+                startIndex++;
+                endIndex--;
+
+            }
+            if(chars[startIndex] < 65 || (chars[startIndex] > 90 && chars[startIndex] < 97) || chars[startIndex] > 122) {
+                startIndex++;
+            }
+            if(chars[endIndex] < 65 || (chars[endIndex] > 90 && chars[endIndex] <97) || chars[endIndex] > 122){
+                endIndex--;
+            }
+
+        }
+        String str = String.valueOf(chars);
+        return str;
+    }
+}
