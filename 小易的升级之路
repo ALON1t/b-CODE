@@ -1,0 +1,30 @@
+import java.util.*;
+public class Main{
+    private static int f(int a,int b) {
+        if(a % b == 0) {
+            return b;
+        }
+        return f(b,a % b);
+    }
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        while(sc.hasNext()) {
+            int n = sc.nextInt();
+            int a = sc.nextInt();
+            int[] b = new int[n];
+            
+            for(int i = 0; i < n;i++) {
+                b[i] = sc.nextInt();
+                if(b[i] <= a ) {
+                    a = a + b[i];
+                } else if(b[i] > a) {
+                    int ret = f(a,b[i]);
+                    a += ret;
+                }
+             
+            }
+              
+            System.out.println(a);
+        }
+    }
+}
