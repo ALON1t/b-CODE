@@ -1,0 +1,27 @@
+import java.util.*;
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        while (sc.hasNext()) {
+            Map<String,Integer> map = new LinkedHashMap<String, Integer>();
+            int n = sc.nextInt();//候选人人数
+            for (int i = 0; i < n;i++){
+                map.put(sc.next(),0);
+            }
+            int m = sc.nextInt();//投票人人数
+            int Invalid = 0;
+            for (int i = 0; i < m;i++) {
+                String str = sc.next();
+                if (map.get(str) == null) {
+                    Invalid++;
+                } else {
+                    map.put(str,map.get(str) + 1);
+                }
+            }
+            for(Map.Entry entry : map.entrySet()) {
+                System.out.println(entry.getKey()+" : "+entry.getValue());
+            }
+            System.out.println("Invalid : "+Invalid);
+        }
+    }
+}
