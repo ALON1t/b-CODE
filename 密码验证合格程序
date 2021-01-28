@@ -1,0 +1,50 @@
+import java.util.Scanner;
+public class Main {
+     public static boolean judge1(String str) {//长度
+        if (str.length() > 8) {
+            return true;
+        }
+        return false;
+    }
+    public static boolean judge2(String str) {//符号
+        int low = 0,up = 0,sz = 0, other = 0;
+        char[] chars = str.toCharArray();
+        for (int i = 0; i < chars.length;i++) {
+            if (chars[i] >= 'a' && chars[i] <= 'z') {
+                low = 1;
+            }else if (chars[i] >= 'A' && chars[i] <= 'Z') {
+                up = 1;
+            }else if (chars[i] >= '0' && chars[i] <= '9') {
+                sz = 1;
+            } else {
+                other = 1;
+            }
+        }
+        if (low + up + sz + other >= 3) {
+            return true;
+        } 
+        return false;
+    }
+    public static boolean judge3(String str) {//字串
+        for (int i = 0; i < str.length() - 2;i++) {
+            //substring(x)是从字符串的的第x个字符截取
+            //substring(x,y）从x到y前的位置停止 左闭右开
+            String str2 = str.substring(i,i+3);
+            if (str.substring(i + 1).contains(str2)) {
+                return false;
+            }
+        }
+        return true;
+    }
+    public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+        while (in.hasNext()) {// 注意，如果输入是多个测试用例，请通过while循环处理多个测试用例
+            String str = in.next();
+            if(judge1(str) && judge2(str) && judge3(str)) {
+                System.out.println("OK");
+            } else {
+                System.out.println("NG");
+            }
+        }
+    }
+}
