@@ -1,0 +1,44 @@
+import java.util.Scanner;
+
+public class Main {
+    public static void Test(char[] s) {
+        //一个字节8个数据位
+        int[] result  = new int[8];
+
+        for(int i=0; i<s.length; i++) {
+            int n = 0x01;
+            int j = 7;
+            int sum = 0;
+
+            //进行7次与运算，得到其二进制形式及 1 的个数
+            while(j>0) {
+                // 与运算
+                result[j] = (s[i] & n) == 0 ? 0 : 1;
+                if(result[j] == 1) {
+                    sum++;
+                }
+                n = n << 1;
+                j--;
+            }
+
+            // 进行校验
+            if((sum & 1) == 0) {
+                result[0] = 1;
+            }
+            for(int k=0; k<result.length; k++) {
+                System.out.print(result[k]);
+            }
+
+            result[0] = 0; //一次完成，重新置0
+            System.out.println();
+        }
+    }
+
+    public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+        while(in.hasNext()) {
+            String str = in.nextLine();
+            Test(str.toCharArray());
+        }
+    }
+}
