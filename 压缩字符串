@@ -1,0 +1,25 @@
+class Solution {
+    public int compress(char[] chars) {
+        StringBuilder sb = new StringBuilder();
+        int j = 0;
+        char[] chars1 = Arrays.copyOf(chars,chars.length + 1);
+        for(int i = 0; i < chars.length;i++) {
+            int count = 1;
+            while(chars1[i] == chars1[i+1]) {
+                count++;
+                i++;
+            }
+            if(count == 1) {
+                sb.append(chars1[i]);
+            } else {
+                sb.append(chars1[i]);
+                sb.append(count);
+            }
+        }
+        char[] ch = sb.toString().toCharArray();
+        for (; j < ch.length;j++) {
+            chars[j] = ch[j]; 
+        }
+        return j;
+    }
+}
