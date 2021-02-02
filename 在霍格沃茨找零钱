@@ -1,0 +1,39 @@
+import java.util.Scanner;
+public class Main {
+    public static void fun(String P,String A) {
+        String[] str1 = P.split("\\.");
+        String[] str2 = A.split("\\.");
+        int galleonP = Integer.parseInt(str1[0]);
+        int sickleP = Integer.parseInt(str1[1]);
+        int knutP = Integer.parseInt(str1[2]);
+        int sumP = galleonP*17*29 + sickleP*29+knutP;
+
+        int galleonA = Integer.parseInt(str2[0]);
+        int sickleA = Integer.parseInt(str2[1]);
+        int knutA = Integer.parseInt(str2[2]);
+        int sumA = galleonA*17*29 + sickleA*29+knutA;
+        int sum = sumA - sumP;
+
+        if (sum > 0) {
+            int g = sum / (17*29);
+            int s = sum / 29 % 17;
+            int k = sum % 29;
+            System.out.println(g + "." + s + "." + k);
+        } else {
+            sum = sumP - sumA;
+            int g = sum / (17*29);
+            int s = sum / 29 % 17;
+            int k = sum % 29;
+            System.out.println("-" + g + "." + s + "." + k);
+        }
+
+    }
+    public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+        //while (in.hasNext()) {// 注意，如果输入是多个测试用例，请通过while循环处理多个测试用例
+            String P = in.next();
+            String A = in.next();
+            fun(P,A);
+        //}
+    }
+}
