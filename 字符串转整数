@@ -1,0 +1,33 @@
+class Solution {
+    public int myAtoi(String s) {
+        char[] chars = s.toCharArray();
+        boolean tag = false; //正
+        int x = 0;
+        int i = 0;
+         while(i < s.length() && chars[i] == ' ') {
+            i++;
+        }
+        if(i == s.length()) {
+            return 0;
+        } 
+        if (chars[i] == '-') {
+            tag = true; //负数
+            i++;
+        } else if (chars[i] == '+') {
+            i++;
+        } else if (!Character.isDigit(chars[i])) {
+            return 0;
+        }
+        while (i < s.length() && Character.isDigit(chars[i])) {
+            int y = chars[i] - '0'; //字符转整数
+            if(x > (Integer.MAX_VALUE - y) / 10) { //x * 10 + y > Integer.MAX_VALUE 越界
+                return tag ? Integer.MIN_VALUE : Integer.MAX_VALUE;
+            }
+            x = x * 10 + y;
+            i++;
+        }
+
+        
+        return tag ? -x : x;
+    }
+}
