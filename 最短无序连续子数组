@@ -1,0 +1,30 @@
+class Solution {
+    
+    public static int shortest(int[] nums) {
+        int[] nums1 = Arrays.copyOf(nums,nums.length);
+        Arrays.sort(nums1);
+        int startIndex = 0;
+        int endIndex = 0;
+        int i = 0;
+        for (; i < nums.length;i++) {
+            if(nums[i] != nums1[i]) {
+                startIndex = i;
+                break;
+            }
+        }
+        if(i == nums1.length) {
+            return 0;
+        }
+        for(int j = nums.length - 1; j >= 0; j--) {
+            if(nums[j] != nums1[j]) {
+                endIndex = j;
+                break;
+            }
+        }
+        return endIndex - startIndex + 1;
+    }
+    public int findUnsortedSubarray(int[] nums) {     
+        int len = shortest(nums);
+        return len;
+    }
+}
