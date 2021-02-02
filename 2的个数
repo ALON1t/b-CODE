@@ -1,0 +1,26 @@
+import java.util.*;
+
+public class Count2 {
+    public int countNumberOf2s(int n) {
+        // write code here
+        int count = 0; //计算2的总个数
+        int low = 0; //计算低位
+        int current = 0; //计算当前位
+        int high = 0; //计算高位
+        int flag = 1; //标记此时是个位数1、十位数10还是百位数100
+        while (n / flag != 0) {   
+            low = n - (n / flag) * flag; 
+            current = (n / flag) % 10; 
+            high = (n / flag) / 10;  
+            if (current == 1 || current == 0) {  //当前位 < 2时
+                count += high * flag; 
+            } else if (current == 2) {  // = 2时
+                count += high * flag + low + 1;
+            } else {  // > 2时
+                count += (high + 1) * flag;
+            }
+            flag *= 10;
+        }
+        return count;
+    }
+}
