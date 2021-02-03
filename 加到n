@@ -1,0 +1,21 @@
+import java.util.*;
+
+public class GoUpstairs {
+    public int countWays(int n) {
+        // write code here
+        int a = 1;
+        int b = 2;
+        int c = 4;
+        if(n <= 0) return 0;
+        if(n == 1) return 1;
+        if(n == 2) return 2;
+        if(n == 3) return 4;
+        for(int i = 4; i <= n; i++){
+            int sum =((a + b) % 1000000007 + c) % 1000000007;
+            a = b;
+            b = c;
+            c = sum;
+        }
+        return c;
+    }
+}
