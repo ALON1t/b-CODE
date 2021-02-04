@@ -1,0 +1,29 @@
+import java.util.Scanner;
+public class Main {
+    public static String  fun(String str1,String str2) {
+        str1 = str1.toUpperCase();
+        str2 = str2.toUpperCase();
+        char[] chars1 = str1.toCharArray();
+        char[] chars2 = str2.toCharArray();
+        for (int i = 0; i < str2.length();i++) {
+            //用""替换str2在str1中出现的所有字符
+            str1 = str1.replace(str2.charAt(i)+"","");
+        }
+        String str = "";
+        for (int i = 0; i < str1.length();i++) { //去重
+            if (!str.contains(str1.charAt(i)+ "")) {
+                str += str1.charAt(i);
+            }
+        }
+        return str;
+    }
+    public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+        while (in.hasNext()) {// 注意，如果输入是多个测试用例，请通过while循环处理多个测试用例
+            String str1 = in.next();
+            String str2 = in.next();
+            String str = fun(str1,str2);
+            System.out.println(str);
+        }
+    }
+}
