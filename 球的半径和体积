@@ -1,0 +1,20 @@
+import java.util.*;
+public class Main {
+    public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+        while (in.hasNextInt()) {// 注意，如果输入是多个测试用例，请通过while循环处理多个测试用例
+            int x0 = in.nextInt();
+            int y0 = in.nextInt();
+            int z0 = in.nextInt();
+
+            int x1 = in.nextInt();
+            int y1 = in.nextInt();
+            int z1 = in.nextInt();
+
+            double r = Math.sqrt((x0 - x1)*(x0 -x1) + (y0 - y1)* (y0 - y1)  + (z0 - z1) * (z0 -z1));
+
+            double V = (4 * Math.acos(-1) *Math.pow(r,3)) / 3;
+            System.out.printf("%.3f %.3f\n",r,V);
+        }
+    }
+}
