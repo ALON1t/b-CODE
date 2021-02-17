@@ -1,0 +1,24 @@
+import java.util.*;
+public class Solution {
+    public ArrayList<Integer> maxInWindows(int [] num, int size){
+        ArrayList<Integer> res=new ArrayList<Integer>();
+        if(num==null||num.length==0||size==0) return res;
+        int rk=-1;
+        int ans=num[0];
+        int jjj;
+        
+        for(int i=0;i<num.length-size+1;i++){
+            for(int j=i;j<i+size;j++){
+                ans=Math.max(ans,num[j]);
+            }
+            res.add(ans);
+            if(i+1<num.length){
+                ans=num[i+1];
+            }
+            
+        }
+        
+       return res;
+        
+    }
+}
