@@ -1,0 +1,40 @@
+import java.util.*;
+public class Solution {
+    public ArrayList<Integer> cache=new ArrayList<>();
+    public int len=0;
+    public int mid_1=0;
+
+    public void Insert(Integer num) {
+        if(len==0){
+            cache.add(num);            
+        }
+        else{
+            int i=mid_1;
+            if(num>cache.get(mid_1)){
+                while(i<len && num>cache.get(i)){
+                    i++;                    
+                }
+                cache.add(i,num);
+                if(len%2==0){
+                    mid_1++;
+                }                
+            }else{
+                while(i>=0 && num<=cache.get(i)){
+                    i--;
+                } 
+                cache.add(i+1,num);
+                if(len%2==0){mid_1++;}
+            }            
+        }        
+        len++;    
+    }
+
+    public Double GetMedian() {
+        if(len%2==1){
+            return cache.get(mid_1)/1.0;
+        }
+        else{
+            return (cache.get(mid_1)+cache.get(mid_1+1))/2.0;
+        }        
+    }
+}
