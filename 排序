@@ -1,0 +1,68 @@
+import java.util.*;
+
+
+public class Solution {
+    /**
+     * 代码中的类名、方法名、参数名已经指定，请勿修改，直接返回方法规定的值即可
+     * 将给定数组排序
+     * @param arr int整型一维数组 待排序的数组
+     * @return int整型一维数组
+     */
+    public int[] MySort (int[] arr) {
+        // write code here
+//         for (int i = 0; i < arr.length; i++) {
+//             int minIndex = i;
+//             for (int j = i + 1; j < arr.length; j++) {
+//                 if (arr[j] < arr[minIndex]) {
+//                     minIndex = j;
+//                 }
+//             }
+//             if (minIndex != i) {
+//                 // swap
+//                 int temp = arr[minIndex];
+//                 arr[minIndex] = arr[i];
+//                 arr[i] = temp;
+//             }
+//         }
+        quickSort(0, arr.length - 1, arr);
+        
+        return arr;
+    }
+    
+    public void quickSort(int left, int right, int[] a) {
+        int i, j, t, temp;
+
+        if (left > right) {
+            return;
+        }
+
+        //temp中存的就是基准数
+        temp = a[left];
+        i = left;
+        j = right;
+        while (i != j) {
+            //顺序很重要，要先从右边开始找
+            while (a[j] >= temp && i < j) {
+                j--;
+            }
+            //再找右边的
+            while (a[i] <= temp && i < j) {
+                i++;
+            }
+            //交换两个数在数组中的位置
+            if (i < j) {
+                t = a[i];
+                a[i] = a[j];
+                a[j] = t;
+            }
+        }
+        //最终将基准数归位
+        a[left]=a[i];
+        a[i]=temp;
+
+        //继续处理左边的，这里是一个递归的过程
+        quickSort(left,i-1,a);
+        //继续处理右边的 ，这里是一个递归的过程
+        quickSort(i+1,right,a);
+    }
+}
