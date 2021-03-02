@@ -1,0 +1,78 @@
+import java.util.*;
+
+
+public class Solution {
+    /**
+     * 代码中的类名、方法名、参数名已经指定，请勿修改，直接返回方法规定的值即可
+     * 计算两个数之和
+     * @param s string字符串 表示第一个整数
+     * @param t string字符串 表示第二个整数
+     * @return string字符串
+     */
+    public String solve (String s, String t) {
+        // write code here
+        char[] num1 = s.toCharArray();
+        char[] num2 = t.toCharArray();
+        char[] anschar = calculate(num1,num2);
+        String ans = charToString(anschar);
+        return ans;
+    }
+    public String charToString(char[] in) {
+        String out1= String.valueOf(in);
+        if(out1.charAt(0) == '0' && in.length > 1){
+            String out = out1.substring(1);
+            return out;
+        }
+        return out1;
+    }
+    public char[] calculate(char[] a, char[] b){
+        int len = a.length > b.length ? a.length : b.length;
+        char[] ans  = new char[len + 1];
+        ans[0] = '0';
+        int p1 = a.length - 1, p2 = b.length - 1, p3 = ans.length - 1;
+        char flag = 0;
+        int t = 0;
+        while(p1 >= 0 && p2 >= 0){
+            t = a[p1] - '0' + b[p2] - '0' + flag;
+            flag = 0;
+            if(t>9){
+                t -= 10;
+                flag = 1;
+            }
+            ans[p3] = (char)(t + '0');
+            p1-=1;
+            p2-=1;
+            p3-=1;
+        }
+        if(p1 < 0 && p2 < 0){
+            ans[0] += flag;
+        } else if(p1 < 0){
+            while(p2 >= 0){
+                t = b[p2] - '0' + flag;
+                flag = 0;
+                if(t>9){
+                    t -= 10;
+                    flag = 1;
+                }
+                ans[p3] = (char)(t + '0');
+                p2-=1;
+                p3-=1;
+            }
+            ans[0] += flag;
+        } else if(p2 < 0){
+            while(p1 >= 0){
+                t = a[p1] - '0' + flag;
+                flag = 0;
+                if(t>9){
+                    t -= 10;
+                    flag = 1;
+                }
+                ans[p3] = (char)(t + '0');
+                p1-=1;
+                p3-=1;
+            }
+            ans[0] += flag;
+        }
+        return ans;
+    }
+}
