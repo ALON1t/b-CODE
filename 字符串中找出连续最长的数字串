@@ -1,0 +1,31 @@
+import java.util.*;
+public class Main {
+    public static String fun(String str) {
+        int len = str.length();
+        char[] chars = str.toCharArray();
+        int max = 0;
+        int index = 0;
+        int index1 = 0;
+        for(int i = 0; i < len;i++) {
+            int sum = 0;
+            if(Character.isDigit(chars[i])) {
+                index1 = i;
+                while (i < len && Character.isDigit(chars[i])) {
+                    sum++;
+                    i++;
+                }
+            }
+            if (sum > max) {
+                max = sum;
+                index = index1;
+            }
+        }
+        return str.substring(index,index + max);
+    }
+    public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+        String str = in.next();
+        String s = fun(str);
+        System.out.println(s);
+    }
+}
