@@ -1,0 +1,23 @@
+import java.util.*;
+
+public class Printer {
+    public int[] arrayPrint(int[][] arr, int n) {
+        // write code here
+        int[] arr1 = new int[n*n];
+        int i = 0; //行
+        int j = n - 1; //列
+        int k = 0;
+        while (i < n) {
+           int x = i; int y = j;
+           while (x < n && y < n) {
+               arr1[k++] = arr[x++][y++];
+           }
+           if(j > 0) {
+               j--;
+           } else {
+               i++;
+           }
+        }
+        return arr1;
+    }
+}
