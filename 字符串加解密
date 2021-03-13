@@ -1,0 +1,70 @@
+import java.util.*;
+public class Main{
+   public static void fun(String str1, String  str2) {
+
+        char[] c1 = str1.toCharArray();
+        char[] c2 = str2.toCharArray();
+        for(int i = 0; i < c1.length;i++) {
+            if (c1[i] >= 'A' && c1[i] <= 'Z') {
+                if(c1[i] == 'Z') {
+                    c1[i] = 'a';
+                } else {
+                    c1[i]++;
+                    c1[i] += 32; //转换为小写
+                }
+            } else if(c1[i] >= 'a' && c1[i] <= 'z') {
+                if(c1[i] == 'z') {
+                    c1[i] = 'A';
+                } else {
+                    c1[i]++;
+                    c1[i] -= 32; //转换为大写
+                }
+            } else if (c1[i] >= '0' && c1[i] <= '9') {
+                if(c1[i] == '9') {
+                    c1[i] = '0';
+                } else {
+                    c1[i]++;
+                }
+            } else {
+                i++;
+            }
+        }
+        System.out.println(c1);
+        //解密
+        for(int i = 0; i < c2.length;i++) {
+            if (c2[i] >= 'A' && c2[i] <= 'Z') {
+                if(c2[i] == 'A') {
+                    c2[i] = 'z';
+                } else {
+                    c2[i]--;
+                    c2[i] += 32; //转换为小写
+                }
+            } else if(c2[i] >= 'a' && c2[i] <= 'z') {
+                if(c2[i] == 'a') {
+                    c2[i] = 'Z';
+                } else {
+                    c2[i]--;
+                    c2[i] -= 32; //转换为大写
+                }
+            } else if (c2[i] >= '0' && c2[i] <= '9') {
+                if(c2[i] == '0') {
+                    c2[i] = '9';
+                } else {
+                    c2[i]--;
+                }
+            } else {
+                i++;
+            }
+        }
+        System.out.println(c2);
+    }
+    public static void main(String[] args) {
+        Scanner sc  = new Scanner(System.in);
+        while(sc.hasNext()) {
+            String str1 = sc.nextLine();
+            String str2 = sc.nextLine();
+
+            fun(str1,str2);
+        }
+    }
+}
