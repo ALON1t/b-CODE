@@ -1,0 +1,26 @@
+import java.util.Scanner;
+import java.util.ArrayList;
+public class Main{
+    public static void main(String[] args){
+        Scanner sc = new Scanner(System.in);
+        while(sc.hasNext()){
+            int n = sc.nextInt();
+            int m = sc.nextInt();
+            fun(n,m,new ArrayList<Integer>(),1);
+        }
+    }
+    private static void fun(int n,int m,ArrayList<Integer> list,int start){
+        if(m == 0){
+            for(int i = 0; i < list.size() - 1; i++) { 
+                System.out.print(list.get(i) + " ");
+            }
+            System.out.println(list.get(list.size() - 1));
+        }else if(m > 0){
+            for(int i = start;i <= n;i++){
+                list.add(i);
+                fun(n,m-i,list,i+1);
+                list.remove(list.size()-1);
+            }
+        }
+    }
+}
