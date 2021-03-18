@@ -1,0 +1,29 @@
+import java.util.*;
+public class Solution {
+    public int MoreThanHalfNum_Solution(int [] array) {
+        if(array.length < 1) {
+            return 0;
+        }
+        if(array.length == 1) {
+            return array[0];
+        }
+        Arrays.sort(array);
+        int max = 0;
+        int index = 0;
+        for(int i = 0; i < array.length - 1;i++) {
+            int count = 1;
+            while((i + 1 < array.length) && array[i] == array[i + 1]) {
+                index = i;
+                count++;
+                i++;
+            }
+            if(count > max) {
+                max = count;
+            }
+        }
+        if (max <= array.length /2) {
+            return 0;
+        }
+        return array[index];
+    }
+} 
