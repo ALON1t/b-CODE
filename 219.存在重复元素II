@@ -1,0 +1,16 @@
+class Solution {
+    public boolean containsNearbyDuplicate(int[] nums, int k) {
+        int j = 0;
+        for(int i = 0; i < nums.length - 1;i++) {
+            j = i+1;
+            while (j < nums.length) {
+                if((nums[i] == nums[j]) && ((j - i) <= k)) {
+                    return true;
+                } else {
+                    j++;
+                }
+            }
+        }
+        return false;
+    }
+}
